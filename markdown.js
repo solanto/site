@@ -21,6 +21,7 @@ import {
 } from "./node_modules/markdown-it/lib/common/utils.mjs"
 import getBBox from "svg-pathdata-getbbox"
 import embedAspectRatios from "./embed-aspect-ratios.js"
+// import WebMscore from "webmscore"
 
 try {
 	filesystem.statSync("tmp/")
@@ -71,8 +72,45 @@ const abcjsScript = filesystem
 	.readFileSync("node_modules/abcjs/dist/abcjs-basic-min.js")
 	.toString()
 
+const webmscoreScript = filesystem
+	.readFileSync("node_modules/webmscore/webmscore.js")
+	.toString()
+
 // i wrote this nested mess before i knew about `node:fs/promises`
 async function renderAudioFile(content, midi, bundledFilePath, stylePath = "") {
+	// const dom = new JSDOM(
+	// 	`<body>
+	// 		<div id="abc"></div>
+	//      <script>${webmscoreScript}</script>
+	//    </body>`,
+	// 	{ runScripts: "dangerously" }
+	// )
+
+	// dom.window.URL = {
+	// 	createObjectURL: blob => blob.toString("base64")
+	// }
+
+	// dom.window.midi = midi
+
+	// dom.window.eval(`
+	//   WebMscore.ready.then(async () => {
+	// 		const score = await WebMscore.load("midi", midi, [], false)
+	// 		console.log(await score.saveAudio("mp3"))
+	// 		score.destroy()
+	// 	})
+	// `)
+
+	// await dom.window.WebMscore.ready
+
+	// const score = await dom.window.WebMscore.load("midi", midi, [], false)
+
+	// filesystem.writeFile(
+	// 	join(eleventyOutputPath, bundledFilePath),
+	// 	await score.saveAudio("mp3")
+	// )
+
+	// score.destroy()
+
 	filesystem.mkdtemp("tmp/musescore-", (_, dir) => {
 		filesystem.writeFile(join(dir, "midi.mid"), midi, () => {
 			const out = join(dir, "out.mp3")
@@ -136,6 +174,8 @@ markdown.renderer.rules.fence = (tokens, idx, options, env, slf) => {
 			midiOutputType: "binary",
 			bpm: 100
 		})
+
+		console.log(midi)
 
 		let stylePath = ""
 

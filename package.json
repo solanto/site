@@ -46,11 +46,12 @@
 		"prismjs": "^1.29.0",
 		"short-hash": "^1.0.0",
 		"svg-pathdata-getbbox": "^1.0.8",
-		"url-equal": "0.1.2-1"
+		"url-equal": "0.1.2-1",
+		"webmscore": "^1.2.1"
 	},
 	"devDependencies": {
-		"prettier": "^3.3.3",
-		"vercel": "^37.13.0"
+		"netlify-cli": "^17.37.2",
+		"prettier": "^3.3.3"
 	},
 	"prettier": {
 		"useTabs": true,
