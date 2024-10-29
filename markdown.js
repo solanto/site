@@ -26,7 +26,7 @@ try {
 	filesystem.statSync("tmp/")
 	filesystem.rmSync("tmp/", { recursive: true, force: true })
 } catch (error) {
-	if (code !== "ENOENT") throw error
+	if (error.code !== "ENOENT") throw error
 }
 
 filesystem.mkdirSync("tmp")
