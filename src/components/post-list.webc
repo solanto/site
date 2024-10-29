@@ -1,0 +1,27 @@
+<ol>
+    <li webc:for="(post, index) of collection.toSorted((a, b) =>
+        b.data.modified - a.data.modified
+    )">
+        <article>
+            <h2><a
+                :href="post.url"
+                @html="
+                    renderTemplate(post?.data?.title ?? '*untitled*', 'md')
+                        .then(content => typogrify(innerHTML(content)))
+                "
+            ></a></h2>
+            <dl>
+                <dt webc:if="post?.data?.updated">updated</dt>
+                <dt webc:else>posted</dt>
+                <dd>
+                    <time webc:if="index == 0" @html="timestamp(post?.data?.modified?.toISOString())"></time>
+                    <time webc:else @html="timestamp(post?.data?.modified?.toISOString(), 'yyyy-LL-dd \'at\' T ZZZZ')"></time>
+                </dd>
+                <dt webc:if="post?.data?.nontrivialTags?.length > 0">tags</dt>
+                <dd webc:for="tag of post?.data?.nontrivialTags?.toSorted()">
+                    <a @text="tag" :href="`/tags/${slug(tag)}`"></a>
+                </dd>
+            </dl>
+        </article>
+    </li>
+</ol>

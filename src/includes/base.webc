@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title @text="plaintextTitle ?? title ?? 'dandelion.computer'"></title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta name="description" content="">
+	<meta webc:if="date" property="article:published_time" :content="date.toISOString()">
+	<meta webc:if="updated" property="article:modified_time" :content="updated.toISOString()">
+	<link webc:keep href="https://cdn.jsdelivr.net/npm/modern-normalize@v3.0.1/modern-normalize.min.css" rel="stylesheet">
+	<link rel="icon" href="/favicon.png">
+	<link webc:keep rel="stylesheet" href="/fonts/wonder-unit-sans/font-face.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link webc:keep href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&family=Noto+Color+Emoji&display=swap" rel="stylesheet">
+	<link webc:keep rel="stylesheet" href="/bundle/modern-normalize.css">
+	<link webc:keep rel="stylesheet" href="/styles/base.css">
+	<link rel="stylesheet" :href="getBundleFileUrl('css')" webc:keep />
+	<script :src="getBundleFileUrl('js')" webc:keep></script>
+</head>
+
+<body>
+	<header>
+		<a href="/" class="title-bar">
+		    <img class="logo" alt src="/branding/dandelion-computer.svg" width="64" height="64">
+			<div class="title" aria-hidden="true"><span>dandelion<br>.computer</span></div>
+		</a>
+		<nav>
+			<ul>
+			    <li webc:for="label in navigation"><a
+				    :href="navigation[label]"
+					@text="label"
+					:class="urlEqual(page.url, navigation[label]) ? 'current' : ''"
+				></a></li>
+			</ul>
+		</nav>
+	</header>
+	<main @raw="typogrify(content)"></main>
+</body>
+
+</html>

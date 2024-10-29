@@ -1,0 +1,39 @@
+@font-face {
+	font-family: "Edwin";
+	src:
+		url("/fonts/edwin/Bold.woff2") format("woff2"),
+		url("/fonts/edwin/Bold.woff") format("woff");
+	font-weight: bold;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Edwin";
+	src:
+		url("/fonts/edwin/BdIta.woff2") format("woff2"),
+		url("/fonts/edwin/BdIta.woff") format("woff");
+	font-weight: bold;
+	font-style: italic;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Edwin";
+	src:
+		url("/fonts/edwin/Roman.woff2") format("woff2"),
+		url("/fonts/edwin/Roman.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: "Edwin";
+	src:
+		url("/fonts/edwin/Italic.woff2") format("woff2"),
+		url("/fonts/edwin/Italic.woff") format("woff");
+	font-weight: normal;
+	font-style: italic;
+	font-display: swap;
+}

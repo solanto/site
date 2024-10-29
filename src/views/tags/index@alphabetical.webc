@@ -1,0 +1,7 @@
+---js
+{
+    layout: "tag-list",
+    permalink: "/tags@alphabetical/index.html",
+    sort: _ => (a, b) => b - a
+}
+---

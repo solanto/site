@@ -1,0 +1,13 @@
+---
+layout: titled
+eleventyImport:
+    collections: ["post"]
+---
+
+<section>
+    <x webc:nokeep @html="content"></x>
+</section>
+<section>
+    <h1>posts</h1>
+    <post-list :@collection="collections['post']"></post-list>
+</section>

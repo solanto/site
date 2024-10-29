@@ -1,0 +1,18 @@
+---
+layout: base
+title: "vadå?"
+plaintextTitle: page not found :(
+permalink: /404.html
+---
+
+<p><code>Error 404</code>: you followed a link to a page that doesn't exist!</p>
+<p><span id="back-link">Go back</span> or try the <a href="/">homepage</a>.</p>
+
+<script>
+	document.addEventListener("DOMContentLoaded", () => {
+		const link = document.getElementById("back-link")
+
+		link.addEventListener("click", () => history.back())
+		link.classList.add("link-text")
+	})
+</script>

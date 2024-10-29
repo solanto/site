@@ -1,0 +1,24 @@
+---
+layout: titled
+---
+
+<aside>
+    <dl>
+        <x webc:nokeep webc:if="date">
+            <dt>posted</dt>
+            <dd @html="timestamp(date.toISOString())"></dd>
+        </x>
+        <x webc:nokeep webc:if="updated">
+            <dt>updated</dt>
+            <dd @html="timestamp(updated.toISOString())"></dd>
+        </x>
+        <x webc:nokeep webc:if="nontrivialTags.length > 0">
+            <dt>tags</dt>
+            <dd webc:for="tag of nontrivialTags.toSorted()">
+                <a :href="`/tags/${slug(tag)}`" @text="tag"></a>
+            </dd>
+        </x>
+    </dl>
+</aside>
+<hr></hr>
+<x webc:nokeep @html="content">

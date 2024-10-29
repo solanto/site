@@ -1,0 +1,31 @@
+<style>
+.favicon-link {
+	--favicon-size: 0.8em;
+	text-decoration: none;
+
+	.img-container {
+		background: no-repeat center url("/icons/open-in-new.svg");
+		background-size: 0.85em;
+	}
+
+	img {
+		display: inline;
+		margin-bottom: calc(-1 * ((1em - var(--favicon-size)) / 2));
+		width: calc(var(--favicon-size));
+		height: calc(var(--favicon-size));
+		opacity: 0;
+		visibility: hidden;
+		background-color: var(--color-complement-lightest);
+		transition: opacity 0.1s, visibility 0.5s;
+	}
+
+	&:hover, &:active {
+		img {
+			opacity: 1;
+			visibility: visible;
+		}
+	}
+}
+</style>
+
+<a @attributes class="favicon-link unstyled" webc:root="override" target="_blank"><span class="link-text"><slot></slot></span>&nbsp;<span class="img-container"><img alt="" loading="lazy" decoding="async" :src="`https://v1.indieweb-avatar.11ty.dev/${encodeURIComponent(href)}/`" width="16" height="16"></span></a>

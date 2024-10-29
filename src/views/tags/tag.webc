@@ -1,0 +1,23 @@
+---js
+{
+    layout: "base",
+    eleventyImport: {
+        collections: ["post"]
+    },
+    pagination: {
+        data: "collections",
+        size: 1,
+        alias: "tag"
+    },
+    eleventyComputed: {
+        permalink({ tag }) { return `/tags/${this.slug(tag)}/` },
+        title: ({ tag }) => tag
+    }
+}
+---
+
+<hgroup>
+    <p>tag</p>
+    <h1 @text="title"></h1>
+</hgroup>
+<post-list :@collection="collections[tag]"></post-list>

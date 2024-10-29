@@ -1,0 +1,27 @@
+---js
+{
+    layout: "titled",
+    title: "tags",
+    sort: collections => (a, b) => collections[b].length - collections[a].length
+}
+---
+
+<table>
+    <thead>
+        <tr>
+            <th>tag <a class="sort-link" href="/tags@alphabetical/">sort by tag</a></th>
+            <th class="number">number of posts <a class="sort-link" href="/tags/">sort by number of posts</a></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr
+            webc:for="tag of Object.keys(collections).toSorted().toSorted(sort(collections))"
+            webc:if="tag != 'all' && tag != 'post'"
+        >
+            <td>
+                <a class="icon" :href="slug(tag)" @text="tag"></a>
+            </td>
+            <td class="number" @text="collections[tag].length"></td>
+        </tr>
+    </tbody>
+</table>

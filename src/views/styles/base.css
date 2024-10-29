@@ -1,0 +1,407 @@
+@font-face {
+	font-family: emoji;
+	src:
+		local("Apple Color Emoji"),
+		local("Segoe UI Emoji"),
+		local("Noto Color Emoji"),
+		url("/fonts/noto-color-emoji/font.ttf") format("truetype");
+	font-display: swap;
+	font-weight: normal;
+	font-style: normal;
+}
+
+:root {
+	--color-complement-dark: #08203a;
+	--color-complement-dimmest: #405569;
+	--color-complement-dimmer: #6d808f;
+	--color-complement-dim: #b1c0c7;
+	--color-complement-light: #dce8e2;
+	--color-complement-lighter: #eef4f1;
+	--color-complement-lightest: #f5f6f5;
+
+	--color-brand-dim: #ad7900;
+	--color-brand: #ffcc00;
+	--color-brand-light: #fff7bf;
+
+	--gradient-rainbow: linear-gradient(
+		45deg,
+		rgb(200, 190, 255) 0%,
+		rgb(222, 168, 248) 10%,
+		rgb(168, 222, 258) 30%,
+		rgb(189, 250, 205) 42%,
+		rgb(243, 250, 189) 58%,
+		rgb(250, 227, 189) 70%,
+		rgb(248, 172, 171) 95%,
+		rgb(254, 170, 212) 100%
+	);
+
+	--gradient-rainbow-subtle: linear-gradient(
+		45deg,
+		rgba(200, 190, 255, 0.67) 0%,
+		rgba(222, 168, 248, 0.67) 10%,
+		rgba(168, 222, 258, 0.67) 30%,
+		rgba(189, 250, 205, 0.67) 42%,
+		rgba(243, 250, 189, 0.67) 58%,
+		rgba(250, 227, 189, 0.67) 70%,
+		rgba(248, 172, 171, 0.67) 95%,
+		rgba(254, 170, 212, 0.67) 100%
+	);
+
+	--gradient-spectrum: linear-gradient(150deg, #ecedee, transparent 30%),
+		linear-gradient(330deg, rgb(210, 206, 242), transparent 30%),
+		linear-gradient(225deg, #fff0be, #fbdce7, #e2fae1, powderblue);
+
+	--embed-border-radius: 0.5em;
+	--prism-a11y-border-radius: var(--embed-border-radius);
+
+	font-family: "Atkinson Hyperlegible", emoji, sans-serif;
+	--max-content-width: 60em;
+	--content-margin: max(calc((100vw - var(--max-content-width)) / 2), 2rem);
+	--content-width: calc(100vw - 2 * var(--content-margin));
+	--vertical-margin: 2rem;
+	max-width: var(--max-content-width);
+	margin: var(--vertical-margin) var(--content-margin);
+	padding-bottom: var(--vertical-margin);
+	color: var(--color-complement-dark);
+	background-color: var(--color-complement-lightest);
+}
+
+main {
+	font-size: 1.1rem;
+	line-height: 1.3em;
+	text-wrap: pretty;
+	text-align: justify;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: "Wonder Unit Sans";
+	text-align: left;
+}
+
+h1 {
+	font-weight: 800;
+	letter-spacing: -0.02em;
+	line-height: 0.95em;
+}
+
+@media (min-aspect-ratio: 1) {
+	h1 {
+		font-size: 4em;
+	}
+}
+
+abbr {
+	text-decoration: underline dotted;
+	cursor: help;
+
+	&[title] {
+		&::after {
+			content: " (" attr(title) ")";
+			display: none;
+			font-style: italic;
+		}
+
+		&:focus-visible::after {
+			display: inline;
+		}
+	}
+}
+
+@media (hover: none) {
+	abbr[title]:hover::after {
+		display: inline;
+	}
+}
+
+span.katex {
+	font-size: 1em;
+	font-weight: inherit;
+}
+
+.abc-container {
+	overflow-x: scroll;
+	border-radius: var(--embed-border-radius);
+}
+
+.prism code {
+	background: transparent;
+}
+
+a,
+.link-text {
+	cursor: pointer;
+	color: inherit;
+	text-decoration: underline solid;
+
+	/* background: linear-gradient(
+		90deg,
+		var(--color-brand-dim),
+		var(--color-brand-dim)
+	);
+	--offset: calc(1em + 3px);
+	--line-width: 2px;
+	background-size: 100% var(--line-width);
+	background-position-y: var(--offset);
+	background-repeat: no-repeat;
+
+	&:hover,
+	&:active {
+		background-position-y: 0;
+		background-size: 100%
+			calc(1em + 2 * (var(--offset) - 1em) + var(--line-width));
+		color: white;
+		outline: 0.25ch solid var(--color-brand-dim);
+		border-radius: 0.25em;
+
+		&.favicon-link img {
+			filter: grayscale(1) contrast(100);
+		}
+	} */
+
+	/* &:not(.favicon-link, .title-bar):hover,
+	&:not(.favicon-link, .title-bar):focus-visible {
+		background: var(--gradient-rainbow-subtle);
+	} */
+}
+
+@supports (text-decoration: underline solid black 2px) {
+	a,
+	.link-text {
+		text-decoration: underline solid var(--color-brand-dim) 2px;
+	}
+}
+
+table {
+	border-spacing: 0;
+	width: 100%;
+	border-collapse: separate;
+	border-radius: var(--embed-border-radius);
+	border: 2px solid var(--color-complement-dimmest);
+
+	/* thanks to UnusedCSS at https://unused-css.com/blog/css-rounded-table-corners/
+	   for code for rounded, collapsed tables */
+
+	--inner-border: 2px solid var(--color-complement-dimmer);
+
+	th:not(:last-child),
+	td:not(:last-child) {
+		border-right: var(--inner-border);
+	}
+
+	& > thead:not(:last-child) > tr > th,
+	& > thead:not(:last-child) > tr > td,
+	& > tbody > tr:not(:last-child) > th,
+	& > tbody > tr:not(:last-child) > td,
+	& > tfoot > tr:not(:last-child) > th,
+	& > tfoot > tr:not(:last-child) > td,
+	& > tr:not(:last-child) > td,
+	& > tr:not(:last-child) > th,
+	& > thead:not(:last-child),
+	& > tbody:not(:last-child),
+	& > tfoot:not(:last-child) {
+		border-bottom: var(--inner-border);
+	}
+
+	th:first-child {
+		border-top-left-radius: var(--embed-border-radius);
+	}
+
+	th:last-child {
+		border-top-right-radius: var(--embed-border-radius);
+	}
+}
+
+th,
+td {
+	padding: 1ch;
+	text-align: left;
+
+	&.number {
+		text-align: right;
+		font-variant: tabular-nums;
+	}
+}
+
+th {
+	background-color: var(--color-brand-light);
+
+	.sort-link {
+		overflow: hidden;
+		font-size: 1px;
+		text-decoration: none;
+		color: transparent;
+		position: relative;
+		line-height: 1em;
+
+		&::after {
+			content: "▾";
+			margin-left: -0.5ch;
+			color: var(--color-complement-dimmest);
+			font-size: 1rem;
+			position: absolute;
+			top: -0.33em;
+			left: 0.5ch;
+		}
+	}
+}
+
+figure {
+	margin: 0;
+	width: 100%;
+	border-radius: var(--embed-border-radius);
+	border: 2px solid var(--color-complement-dimmer);
+	overflow: hidden;
+	color: var(--color-complement-dark);
+	background-color: var(--color-brand-light);
+
+	/* height: 0;
+	overflow: hidden;
+	padding-top: calc(591.44 / 1127.34 * 100%);
+	background: white;
+	position: relative; */
+
+	> *:not(figcaption) {
+		/* width: 100%; */
+		width: 100%;
+		max-height: 60vh;
+		border-bottom: 2px solid var(--color-complement-dimmer);
+		background-color: var(--color-complement-light);
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+
+	> iframe {
+		height: auto;
+		display: block;
+	}
+}
+
+figcaption {
+	font-size: 80%;
+	margin: 0.3ch 1ch;
+}
+
+header {
+	.logo {
+		height: 5rem;
+		width: auto;
+	}
+
+	.title-bar {
+		text-decoration: none;
+		display: inline-block;
+
+		& > * {
+			display: inline-block;
+		}
+	}
+
+	.title {
+		color: var(--color-complement-dimmer);
+		font-family: "Wonder Unit Sans";
+		font-size: 3em;
+		font-weight: 1000;
+		letter-spacing: -0.02em;
+		line-height: 0.65em;
+	}
+
+	nav {
+		ul {
+			display: flex;
+			padding-left: 0;
+		}
+
+		li {
+			list-style: none;
+
+			&::before {
+				content: "\00a0·\00a0";
+			}
+
+			&:first-of-type::before {
+				content: "";
+			}
+
+			.current {
+				text-decoration-color: var(--color-complement-dimmer);
+			}
+		}
+	}
+}
+
+@media (max-width: 25rem) {
+}
+
+.scroll-fade-horizontal {
+	background-image:
+
+        /* shadows */
+		linear-gradient(
+			to right,
+			var(--color-complement-lightest),
+			var(--color-complement-lightest)
+		),
+		linear-gradient(
+			to right,
+			var(--color-complement-lightest),
+			var(--color-complement-lightest)
+		),
+		/* shadow covers */
+			linear-gradient(to right, var(--color-complement-dim), transparent),
+		linear-gradient(to left, var(--color-complement-dim), transparent);
+
+	background-position:
+		left center,
+		right center,
+		left center,
+		right center;
+	background-repeat: no-repeat;
+	background-size:
+		20px 100%,
+		20px 100%,
+		10px 100%,
+		10px 100%;
+
+	/* Opera doesn't support this in the shorthand */
+	background-attachment: local, local, scroll, scroll;
+
+	&.prism {
+		background-image:
+
+            /* shadows */
+			linear-gradient(
+				to right,
+				var(--prism-a11y-color-background),
+				var(--prism-a11y-color-background)
+			),
+			linear-gradient(
+				to right,
+				var(--prism-a11y-color-background),
+				var(--prism-a11y-color-background)
+			),
+			/* shadow covers */
+				linear-gradient(
+					to right,
+					var(--color-complement-dim),
+					transparent
+				),
+			linear-gradient(to left, var(--color-complement-dim), transparent);
+	}
+}
+
+.visually-hidden:not(:focus):not(:active) {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}

@@ -1,0 +1,21 @@
+<iframe
+    webc:root="override"
+    :src="src"
+    width="500"
+    :height="500 / aspect"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen
+    :class="`aspect-${slug(domain)}`"
+>
+    <slot></slot>
+</iframe>
+
+<script webc:type="js" webc:is="style">
+	`
+	    iframe.aspect-${slug(domain)} {
+	        aspect-ratio: ${aspect};
+		}
+	`
+</script>

@@ -1,0 +1,37 @@
+<link rel="stylesheet" href="../views/fonts/edwin/font-face.css">
+
+<div class="music" webc:root="override">
+	<slot></slot>
+</div>
+
+<style>
+    :root {
+        font-family: "Atkinson Hyperlegible", emoji, "Edwin", sans-serif;
+    }
+
+	.music {
+		& > * {
+			display: block;
+		}
+
+		svg {
+			color: inherit;
+			height: auto;
+
+
+			* {
+				font-family: "Edwin";
+			}
+		}
+
+		section {
+		    margin-top: 1em;
+		}
+	}
+
+	@media (min-aspect-ratio: 1) {
+		.music .abc-container.full-width svg {
+			width: 100%;
+		}
+	}
+</style>
