@@ -118,7 +118,7 @@ async function renderAudioFile(content, midi, bundledFilePath, stylePath = "") {
 			const styleFlag = stylePath ? "-S " + stylePath : ""
 
 			exec(
-				`./musescore/musescore --appimage-extract-and-run -o ${out} ${join(dir, "midi.mid")} ${styleFlag}`,
+				`musescore --appimage-extract-and-run -o ${out} ${join(dir, "midi.mid")} ${styleFlag}`,
 				{ stdio: "ignore" },
 				error => {
 					// ignore musescore's GUI & audio IO errors
