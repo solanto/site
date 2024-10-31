@@ -118,7 +118,7 @@ async function renderAudioFile(content, midi, bundledFilePath, stylePath = "") {
 			const styleFlag = stylePath ? "-S " + stylePath : ""
 
 			exec(
-				`musescore --appimage-extract-and-run -o ${out} ${join(dir, "midi.mid")} ${styleFlag}`,
+				`QT_QPA_PLATFORM=offscreen musescore -o ${out} ${join(dir, "midi.mid")} ${styleFlag}`,
 				{ stdio: "ignore" },
 				error => {
 					// ignore musescore's GUI & audio IO errors
