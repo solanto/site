@@ -1,0 +1,3 @@
+# https://github.com/github-linguist/linguist/blob/main/docs/overrides.md
+*.webc linguist-language=html
+*.mss linguist-vendored
