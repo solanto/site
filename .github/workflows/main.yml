@@ -1,51 +1,51 @@
 name: build
 
 on:
-    push:
-        branches:
-            - master
+  push:
+    branches:
+        - master
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        permissions:
-            id-token: write
-            pages: write
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-        steps:
-            - name: check out code
-              uses: actions/checkout@master
-              with:
-                  submodules: true
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      pages: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: ⤵️ check out code
+        uses: actions/checkout@master
+        with:
+          submodules: true
 
-            - name: install musescore
-              run: sudo apt install -y musescore
+      - name: ➕ install musescore
+        run: sudo apt install -y musescore
 
-            - uses: pnpm/action-setup@v4
-              name: install pnpm
-              with:
-                  version: 9
-                  run_install: false
+      - name: ➕ install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
 
-            - name: install node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-                  cache: pnpm
+      - name: ➕ install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
 
-            - name: install node dependencies
-              run: pnpm install
+      - name: ➕ install node dependencies
+        run: pnpm install
 
-            - name: build
-              run: pnpm exec eleventy
+      - name: 🛠️ build
+        run: pnpm exec eleventy
 
-            - name: upload artifact to github pages
-              uses: actions/upload-pages-artifact@v3
-              with:
-                  path: dist/
+      - name: 📦️ upload artifact to github pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist/
 
-            - name: deploy to github pages
-              id: deployment
-              uses: actions/deploy-pages@v4
+      - name: 🚀 deploy to github pages
+        id: deployment
+        uses: actions/deploy-pages@v4
