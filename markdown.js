@@ -32,8 +32,6 @@ try {
 
 filesystem.mkdirSync("tmp")
 
-filesystem.chmodSync("musescore/musescore", 0o755)
-
 const eleventyOutputPath = "dist"
 const abcBundlePath = "bundle/abc"
 
