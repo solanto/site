@@ -7,15 +7,12 @@ on:
       
 jobs:
   build:
-    runs-on: debian-latest
+    runs-on: ubuntu-latest
     steps:
       - name: check out code
         uses: actions/checkout@master
         with:
           submodules: true
-
-      - name: install musescore
-        run: sudo apt install -y musescore
           
       - uses: pnpm/action-setup@v4
         name: install pnpm
