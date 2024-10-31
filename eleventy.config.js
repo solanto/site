@@ -14,6 +14,7 @@ import loadPrismLanguages from "prismjs/components/index.js"
 import bundleTransforms from "./bundle-transforms.js"
 import { DateTime } from "luxon"
 import urlEqual from "url-equal"
+import redirects from "eleventy-plugin-redirects"
 
 /**
  * 🎈 11ty config
@@ -72,6 +73,9 @@ export default async function (config) {
 	config.addPlugin(postcssPlugin)
 	config.addPlugin(EleventyRenderPlugin)
 	config.addPlugin(typography)
+	config.addPlugin(redirects, {
+		template: "clientSide"
+	})
 
 	config.addPlugin(webc, {
 		components: ["src/components/**/*.webc"]

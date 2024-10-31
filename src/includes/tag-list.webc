@@ -16,7 +16,7 @@
     <tbody>
         <tr
             webc:for="tag of Object.keys(collections).toSorted().toSorted(sort(collections))"
-            webc:if="tag != 'all' && tag != 'post'"
+            webc:if="tag != 'all' && tag != 'post' && tag != 'redirects'"
         >
             <td>
                 <a class="icon" :href="slug(tag)" @text="tag"></a>

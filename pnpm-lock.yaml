@@ -44,6 +44,9 @@ importers:
       cssnano:
         specifier: ^7.0.6
         version: 7.0.6(postcss@8.4.47)
+      eleventy-plugin-redirects:
+        specifier: ^1.0.0
+        version: 1.0.0
       eval-sanitizer:
         specifier: ^0.0.7
         version: 0.0.7
@@ -1983,6 +1986,9 @@ packages:
 
   electron-to-chromium@1.5.27:
     resolution: {integrity: sha512-o37j1vZqCoEgBuWWXLHQgTN/KDKe7zwpiY5CPeq2RvUqOyJw9xnrULzZAEVQ5p4h+zjMk7hgtOoPdnLxr7m/jw==}
+
+  eleventy-plugin-redirects@1.0.0:
+    resolution: {integrity: sha512-DqbDfmwhY6tTaSVds3MAhjSjggpE5JkzH5PqAbM5TSiCjTXjko/aD9ZpPkHbDregMoNQe2uhPlBx2wq+yVAtgw==}
 
   emoji-regex@10.4.0:
     resolution: {integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==}
@@ -7283,6 +7289,8 @@ snapshots:
   ee-first@1.1.1: {}
 
   electron-to-chromium@1.5.27: {}
+
+  eleventy-plugin-redirects@1.0.0: {}
 
   emoji-regex@10.4.0: {}
 

@@ -4,8 +4,7 @@
 	"main": "index.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"dev": "eleventy --serve",
-		"vercel-dev": "vercel dev"
+		"dev": "eleventy --serve"
 	},
 	"keywords": [],
 	"author": "",
@@ -25,6 +24,7 @@
 		"abcjs": "^6.4.3",
 		"autoprefixer": "^10.4.20",
 		"cssnano": "^7.0.6",
+		"eleventy-plugin-redirects": "^1.0.0",
 		"eval-sanitizer": "^0.0.7",
 		"html-to-text": "^9.0.5",
 		"js-yaml": "^4.1.0",
