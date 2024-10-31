@@ -41,17 +41,11 @@ jobs:
             - name: build
               run: pnpm exec eleventy
 
-            - name: setup github pages
-              if: github.ref == 'refs/heads/main'
-              uses: actions/configure-pages@v3
-
-            - name: upload artifact
-              if: github.ref == 'refs/heads/main'
-              uses: actions/upload-pages-artifact@v1
+            - name: upload artifact to github pages
+              uses: actions/upload-pages-artifact@v3
               with:
-                  # location of the coverage artifacts
-                  path: "./dist"
+                  path: dist/
 
-            - name: deploy
+            - name: deploy to github pages
               id: deployment
-              uses: actions/deploy-pages@v2
+              uses: actions/deploy-pages@v4
