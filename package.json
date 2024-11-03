@@ -13,6 +13,7 @@
 	"description": "",
 	"dependencies": {
 		"@11ty/eleventy": "^3.0.0",
+		"@11ty/eleventy-fetch": "^4.0.1",
 		"@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
 		"@11ty/eleventy-plugin-webc": "^0.11.2",
 		"@jamshop/eleventy-plugin-typography": "^1.0.0",

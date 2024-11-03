@@ -1,4 +1,3 @@
-import { EleventyRenderPlugin } from "@11ty/eleventy"
 import syntaxHighlighting from "@11ty/eleventy-plugin-syntaxhighlight"
 import webc from "@11ty/eleventy-plugin-webc"
 import typography from "@jamshop/eleventy-plugin-typography"
@@ -15,6 +14,7 @@ import bundleTransforms from "./bundle-transforms.js"
 import { DateTime } from "luxon"
 import urlEqual from "url-equal"
 import redirects from "eleventy-plugin-redirects"
+import { EleventyRenderPlugin as Render } from "@11ty/eleventy"
 
 /**
  * 🎈 11ty config
@@ -71,8 +71,9 @@ export default async function (config) {
 	config.setLibrary("md", markdown)
 
 	config.addPlugin(postcssPlugin)
-	config.addPlugin(EleventyRenderPlugin)
+	config.addPlugin(Render)
 	config.addPlugin(typography)
+
 	config.addPlugin(redirects, {
 		template: "clientSide"
 	})
@@ -81,11 +82,11 @@ export default async function (config) {
 		components: ["src/components/**/*.webc"]
 	})
 
-	config.addTemplateFormats("bundledpostcss")
+	config.addTemplateFormats("css-inlinne")
 
 	const postcssConfig = await postcssrc()
 
-	config.addExtension("bundledpostcss", {
+	config.addExtension("css-inline", {
 		compile: async inputContent => {
 			const { options, plugins } = postcssConfig
 
@@ -159,8 +160,25 @@ export default async function (config) {
 		return content
 	})
 
+	// config.addExtension("11ty.js", {
+	// 	compile: async function (str, inputPath) {
+	// 		const original = await import(inputPath)
+	// 		// Check if this is a CSS template by its permalink
+	// 		if (original?.data?.permalink?.endsWith(".css")) {
+	// 			return async data => {
+	// 				return await original.render()
+	// 			}
+	// 		}
+	// 		return // Let Eleventy handle non-CSS templates normally
+	// 	}
+	// })
+
 	config.addTransform("bundle-extra", function (content) {
-		if (this.page.outputFileExtension != "html") return content
+		if (
+			this.page.outputFileExtension != "html" ||
+			!this.outputPath.toLowerCase().endsWith(".html")
+		)
+			return content
 
 		const dom = new JSDOM(content)
 		const document = dom.window.document
@@ -196,7 +214,8 @@ export default async function (config) {
 	})
 
 	config.addPlugin(tinyHTML, {
-		collapseWhitespace: false
+		collapseWhitespace: false,
+		removeRedundantAttributes: true
 	})
 
 	return {
