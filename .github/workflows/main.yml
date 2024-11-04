@@ -23,6 +23,12 @@ jobs:
         with:
           submodules: true
 
+      - name: 🥫 persist 11ty cache
+        uses: actions/cache@v3
+        with:
+          path: ./.cache
+          key: ${{ runner.os }}-eleventy-fetch-cache
+
       - name: ➕ install musescore
         run: sudo apt install -y musescore
 
