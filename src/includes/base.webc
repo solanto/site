@@ -35,7 +35,7 @@
 		</nav>
 	</header>
 	<main @raw="typogrify(content)"></main>
-	<hr>
+	<hr class="footer">
 	<footer>
 		<p>made with <span class="worm">worm</span>s by <favicon-link href="https://linktr.ee/andrewsolanto">andrew sòlanto</favicon-link></p>
 		<p>rendered with <favicon-link href="https://11ty.dev">11ty</favicon-link> on <time><script webc:type="js">

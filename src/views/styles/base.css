@@ -112,6 +112,24 @@ hgroup {
 
 hr {
 	color: var(--color-complement-dim);
+	border: none;
+	--thickness: 2px;
+	border-bottom: var(--thickness) var(--color-complement-dim) solid;
+
+	&.footer {
+		position: relative;
+		overflow: visible;
+
+		&::before {
+			content: "🌈🌱🌞🌳🚂🪲⚙️";
+			font-size: 0.75em;
+			position: absolute;
+			right: 0;
+			top: calc(-1 * (0.5em - var(--thickness) / 2));
+			background-color: var(--color-complement-lightest);
+			padding-left: 0.5ch;
+		}
+	}
 }
 
 abbr {
