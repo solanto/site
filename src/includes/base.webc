@@ -45,7 +45,7 @@
 			)
 		</script></time><x webc:nokeep webc:if="process.env.PRODUCTION"> via commit <favicon-link :href="`https://github.com/solanto/site/commit/${process.env.GITHUB_SHA}`"><code @text="process.env.GITHUB_SHA.substring(0, 7)"></code></favicon-link></x></p>
 	</footer>
-	<script data-goatcounter="https://stats.dandelion.computer/count" async src="//gc.zgo.at/count.js"></script>
+	<script webc:keep data-goatcounter="https://stats.dandelion.computer/count" async src="//gc.zgo.at/count.js"></script>
 </body>
 
 </html>
