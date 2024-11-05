@@ -61,9 +61,13 @@
 	--vertical-margin: 2rem;
 	max-width: var(--max-content-width);
 	margin: var(--vertical-margin) var(--content-margin);
-	padding-bottom: var(--vertical-margin);
 	color: var(--color-complement-dark);
 	background-color: var(--color-complement-lightest);
+}
+
+:root,
+main {
+	padding-bottom: var(--vertical-margin);
 }
 
 main {
@@ -92,6 +96,22 @@ h1 {
 	h1 {
 		font-size: 4em;
 	}
+}
+
+hgroup {
+	font-weight: bold;
+
+	:first-child {
+		margin-bottom: 0;
+	}
+
+	:not(:first-child) {
+		margin-top: 0;
+	}
+}
+
+hr {
+	color: var(--color-complement-dim);
 }
 
 abbr {
@@ -335,7 +355,17 @@ header {
 	}
 }
 
-@media (max-width: 25rem) {
+footer {
+	.worm {
+		font-size: 1%;
+		color: transparent;
+
+		&::after {
+			content: "🪱";
+			font-size: 10000%;
+			color: initial;
+		}
+	}
 }
 
 .scroll-fade-horizontal {
