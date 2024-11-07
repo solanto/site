@@ -30,7 +30,7 @@ jobs:
           key: ${{ runner.os }}-eleventy-fetch-cache
 
       - name: ➕ install musescore
-        run: sudo apt install -y musescore
+        run: sudo apt-get install -y musescore
 
       - name: ➕ install pnpm
         uses: pnpm/action-setup@v4
